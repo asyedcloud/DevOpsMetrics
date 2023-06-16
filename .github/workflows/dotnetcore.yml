@@ -222,7 +222,7 @@ jobs:
         package: webapp 
         #slot-name: staging         
     - name: Deploy website app settings
-      run: az webapp config appsettings set --name devops-prod-eu-web --resource-group "devopsmetrics" --settings "AppSettings:AzureDevOpsPatToken=${{ secrets.AzureDevOpsPATToken }}" "AppSettings:GitHubClientId=${{ secrets.GitHubClientId }}" "AppSettings:GitHubClientSecret=${{ secrets.GitHubClientSecret }}" #--slot "staging"  
+      run: az webapp config appsettings set --name devops-prod-eu-web-asy2 --resource-group "devopsmetrics2" --settings "AppSettings:AzureDevOpsPatToken=${{ secrets.AzureDevOpsPATToken }}" "AppSettings:GitHubClientId=${{ secrets.GitHubClientId }}" "AppSettings:GitHubClientSecret=${{ secrets.GitHubClientSecret }}" #--slot "staging"  
 
     # Run functional tests on staging slots
     - name: Functional Tests
@@ -231,7 +231,7 @@ jobs:
         $vsTestConsoleExe = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe"
         $targetTestDll = "functionaltests\DevOpsMetrics.FunctionalTests.dll"
         $testRunSettings = "/Settings:`"functionaltests\test.runsettings`" "
-        $parameters = " -- ServiceUrl=""https://devops-prod-eu-service.azurewebsites.net/"" WebsiteUrl=""https://devops-prod-eu-web.azurewebsites.net/"" "
+        $parameters = " -- ServiceUrl=""https://devops-prod-eu-service-asy2.azurewebsites.net/"" WebsiteUrl=""https://devops-prod-eu-web-asy2.azurewebsites.net/"" "
         #Note that the `" is an escape character to quote strings, and the `& is needed to start the command
         $command = "`& `"$vsTestConsoleExe`" `"$targetTestDll`" $testRunSettings $parameters " 
         Write-Host "$command"
