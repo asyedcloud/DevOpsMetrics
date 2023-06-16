@@ -1,17 +1,17 @@
-﻿# az login
-# az account set --subscription 65b8d298-e5bd-4735-912e-8b9c510c4e00
-CLS
+﻿az login --tenant fd5a8552-75d4-4a8c-bbe8-712a34d78b12
+az account set --subscription 47460cf5-947a-40a4-99f6-272d954e5493
+# CLS
 $resourceGroupName="devopsmetrics"
-$resourceLocation="eastus"
-$keyVaultName="devops-prod-eu-vault"
-$storageName="devopsprodeustorage"
-$hostingName="devops-prod-eu-hosting"
-$appInsightsName="devops-prod-eu-appinsights"
-$serviceName="devops-prod-eu-service"
-$websiteName="devops-prod-eu-web"
-$functionName="devops-prod-eu-function"
-$administrationEmailAccount="samsmithnz_gmail.com#EXT#@samsmithnzgmail.onmicrosoft.com"
-$fileRoot = "C:\Users\samsm\source\repos\DevOpsMetrics\src"
+$resourceLocation="uksouth"
+$keyVaultName="devops-prod-eu-vault-asy"
+$storageName="devopsprodeustorage-asy"
+$hostingName="devops-prod-eu-hosting-asy"
+$appInsightsName="devops-prod-eu-appinsights-asy"
+$serviceName="devops-prod-eu-service-asy"
+$websiteName="devops-prod-eu-web-asy"
+$functionName="devops-prod-eu-function-asy"
+$administrationEmailAccount="asyedcloud@gmail.com"
+$fileRoot = "C:\Repo\DevOpsMetrics\src"
 $templatesLocation="$fileRoot\DevOpsMetrics.Infrastructure\Templates"
 $error.clear()
 
