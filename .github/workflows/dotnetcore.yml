@@ -174,7 +174,7 @@ jobs:
     - build      
     - test
     - buildFunction
-    - sonarCloud
+    # - sonarCloud
     if: github.ref == 'refs/heads/main'
     steps:        
     # Login with the secret SP details
