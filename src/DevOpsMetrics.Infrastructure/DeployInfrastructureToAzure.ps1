@@ -10,7 +10,7 @@ $appInsightsName="devops-prod-eu-appinsights-asy"
 $serviceName="devops-prod-eu-service-asy"
 $websiteName="devops-prod-eu-web-asy"
 $functionName="devops-prod-eu-function-asy"
-$administrationEmailAccount="asyedcloud@gmail.com"
+$administrationEmailAccount="asyedcloud_gmail.com#EXT#@asyedcloudgmail.onmicrosoft.com"
 $fileRoot = "C:\Repo\DevOpsMetrics\src"
 $templatesLocation="$fileRoot\DevOpsMetrics.Infrastructure\Templates"
 $error.clear()

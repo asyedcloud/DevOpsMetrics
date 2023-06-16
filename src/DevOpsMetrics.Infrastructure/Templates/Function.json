@@ -7,6 +7,14 @@
     },
     "hostingPlanName": {
       "type": "string"
+    },
+    "sku": {
+      "type": "string",
+      "defaultValue": "Dynamic"
+    },
+    "skuCode": {
+      "type": "string",
+      "defaultValue": "Y1"
     }
   },
   "variables": {
@@ -26,10 +34,7 @@
       "properties": {
         "name": "[parameters('webSiteName')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
-        "httpsOnly": true//,
-        //"siteConfig": {
-        //  "alwaysOn": true
-        //}
+        "httpsOnly": true
       }
     }
   ]
