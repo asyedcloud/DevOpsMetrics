@@ -253,7 +253,8 @@ jobs:
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
-      if: github.ref == 'refs/heads/main' && needs.build.outputs.CommitsSinceVersionSource > 0 #Only create a release if there has been a commit/version change
+      if: github.ref == 'refs/heads/main' 
+      # && needs.build.outputs.CommitsSinceVersionSource > 0 #Only create a release if there has been a commit/version change
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
@@ -263,7 +264,7 @@ jobs:
         
   swapDeploymentSlots:
     runs-on: ubuntu-latest # Note, Azure CLI requires a Linux runner...    
-    needs: [build, deployToStagingSlots]
+    # needs: [build, deployToStagingSlots]
     #Only swap from staging to production slots if running off the main branch - we don't want to deploy off feature branches/PRs
     if: github.ref == 'refs/heads/main' && 0 == 1    
     steps:
