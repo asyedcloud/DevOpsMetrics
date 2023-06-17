@@ -209,7 +209,7 @@ jobs:
     - name: Deploy web service to Azure WebApp
       uses: Azure/webapps-deploy@v2.2.10
       with:
-        app-name: devops-prod-eu-service
+        app-name: devops-prod-eu-service-asy
         package: serviceapp
         #slot-name: staging 
     - name: Deploy web service app settings
@@ -218,7 +218,7 @@ jobs:
     - name: Deploy website to Azure WebApp
       uses: Azure/webapps-deploy@v2.2.10
       with:
-        app-name: devops-prod-eu-web
+        app-name: devops-prod-eu-web-asy
         package: webapp 
         #slot-name: staging         
     - name: Deploy website app settings
@@ -242,7 +242,7 @@ jobs:
     - name: Deploy function to Azure WebApp
       uses: Azure/webapps-deploy@v2.2.10
       with:
-        app-name: devops-prod-eu-function
+        app-name: devops-prod-eu-function-asy
         package: functionapp 
     - name: Deploy function app settings
       run: az webapp config appsettings set --name "devops-prod-eu-function-asy" --resource-group "devopsmetrics" --settings "AppSettings:AzureDevOpsPatToken=${{ secrets.AzureDevOpsPATToken }}" "AppSettings:GitHubClientId=${{ secrets.GitHubClientId }}" "AppSettings:GitHubClientSecret=${{ secrets.GitHubClientSecret }}" "AppSettings:AzureStorageAccountConfigurationString=${{ secrets.AzureStorageConnectionString }}" "AppSettings:WebServiceURL=https://devops-prod-eu-service-asy.azurewebsites.net/" "AppSettings:KeyVaultClientId=${{ secrets.KeyVaultClientId }}" "AppSettings:KeyVaultClientSecret=${{ secrets.KeyVaultClientSecret }}"  "AppSettings:KeyVaultURL=https://devops-prod-eu-vault.vault.azure.net/" "AzureStorageAccountContainerAzureDevOpsBuilds=DevOpsAzureDevOpsBuilds" "AppSettings:AzureStorageAccountContainerAzureDevOpsPRs=DevOpsAzureDevOpsPRs" "AppSettings:AzureStorageAccountContainerAzureDevOpsPRCommits=DevOpsAzureDevOpsPRCommits" "AppSettings:AzureStorageAccountContainerAzureDevOpsSettings=DevOpsAzureDevOpsSettings" "AppSettings:AzureStorageAccountContainerGitHubRuns=DevOpsGitHubRuns" "AppSettings:AzureStorageAccountContainerGitHubPRs=DevOpsGitHubPRs" "AppSettings:AzureStorageAccountContainerGitHubPRCommits=DevOpsGitHubPRCommits" "AppSettings:AzureStorageAccountContainerGitHubSettings=DevOpsGitHubSettings" "AppSettings:AzureStorageAccountContainerMTTR=DevOpsMTTR" "AppSettings:AzureStorageAccountContainerChangeFailureRate=DevOpsChangeFailureRate" "AppSettings:AzureStorageAccountContainerTableLog=DevOpsLog"
