@@ -1,57 +1,53 @@
-﻿{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "webSiteName": {
-      "type": "string"
-    },
-    "hostingPlanName": {
-      "type": "string"
-    },
-    "sku": {
-      "type": "string",
-      "defaultValue": "Dynamic"
-    },
-    "skuCode": {
-      "type": "string",
-      "defaultValue": "Y1"
-    }
-  },
-  "variables": {
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('webSiteName')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-      ],
-      "kind": "functionapp",
-      "tags": {
-        "displayName": "Function"
-      },
-      "properties": {
-        "name": "[parameters('webSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
-        "httpsOnly": true
-      },
-      "sku": {
-        "name": "[parameters('skuCode')]"
-      }
-    }
-  ]
-}
-
-
 {
-  "type": "Microsoft.Web/serverfarms",
-  "apiVersion": "2015-04-01",
-  "name": "[variables('hostingPlanName')]",
-  "location": "[resourceGroup().location]",
-  "properties": {
-      "name": "[variables('hostingPlanName')]",
-      "computeMode": "Dynamic",
-      "sku": "Dynamic"
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+		"webSiteName": {
+			"type": "string"
+		},
+		"hostingPlanName": {
+			"type": "string"
+		},
+		"sku": {
+			"type": "string",
+			"defaultValue": "Standard"
+		},
+    "functionAppPlanSku": {
+      "type": "string",
+      "defaultValue": "EP1"
+    }
+  },
+    "variables": {},
+    "resources": [ 
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2022-03-01",
+        "name": "[parameters('webSiteName')]",
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "Y1",
+          "tier": "Dynamic",
+          "size": "Y1",
+          "family": "Y"
+        },
+        "properties": {
+          "computeMode": "Dynamic"
+        }
+      },
+      {
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2018-11-01",
+        "name": "[parameters('webSiteName')]",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [],
+        "kind": "functionapp",
+        "tags": {
+          "displayName": "Function"
+        },
+        "properties": {
+          "name": "[parameters('webSiteName')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
+          "httpsOnly": true
+        }
+      }]
   }
-}
